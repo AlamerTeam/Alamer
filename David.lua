@@ -9596,7 +9596,8 @@ os.execute('unlink RUNABS.sh;unlink ABS;chmod +x David.sh;chmod +x Run;./Run')
 else
 send(msg.chat_id_, msg.id_,'⌁︙لديك اخر نسخه من التحديث لاتوجد اخطاء')
 end
-endif text == 'نقل الاحصائيات' then
+end
+if text == 'نقل الاحصائيات' then
 local Users = DevAbs:smembers(David.."User_Bot")
 local Groups = DevAbs:smembers(David..'Chek:Groups')
 local Sudos = DevAbs:smembers(David.."Sudo:User")
