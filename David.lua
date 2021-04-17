@@ -125,16 +125,16 @@ return config
 end  
 Load_David() 
 print("\27[36m"..[[                                           
----------------------------------------------
-|    ____             ____                  |
-|   |  _ \  _____   _|  _ \ _ __ _____  __  |
-|   | | | |/ _ \ \ / / |_) | '__/ _ \ \/ /  |
-|   | |_| |  __/\ V /|  __/| | | (_) >  <   |
-|   |____/ \___| \_/ |_|   |_|  \___/_/\_\  |
+---------------------------------------------                                        
+|        ____              _   _            |
+|       |  _ \  ___ _    _(_) | |_          |
+|       | | | |/ _ \ \  / / |/ _  |         |  
+|       | |_| | (_| |\ V /| | (_| |         |
+|       |____/ \__,_| \_/ |_|\__,_|         |
 |-------------------------------------------|
-|This Source Was Developed By (Rio) @W5555.|
-|  This Is The Source Channel @L9L9L .   |
-|               - David -                 |
+|This Source Was Developed By (Rio) @W5555 .|
+|  This Is The Source Channel @L9L9L .      |
+|                - David -                  |
 ---------------------------------------------
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\27[m")
 Config = dofile("./config.lua")
@@ -142,7 +142,7 @@ DevId = Config.DevId or Config.SUDO
 SudoIds = {Config.SudoIds,1558668590} or {Config.sudo_users,1558668590}
 David = Config.David or Config.bot_id
 TokenBot = Config.TokenBot or Config.token
-NameBot = (DevAbs:get(David..'Abs:NameBot') or 'بروكس')
+NameBot = (DevAbs:get(David..'Abs:NameBot') or 'ديفد')
 --     Source David     --
 FilesPrint = "\27[35m".."\nAll Source Files Started ↬ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"..'\27[m'
 FilesNumber = 0
@@ -996,8 +996,8 @@ end
 DevAbs:del(David.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
 end
-if text and text:match('^'..(DevAbs:get(David..'Abs:NameBot') or "بروكس")..' ') then
-data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..(DevAbs:get(David..'Abs:NameBot') or "بروكس")..' ','')
+if text and text:match('^'..(DevAbs:get(David..'Abs:NameBot') or "ديفد")..' ') then
+data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..(DevAbs:get(David..'Abs:NameBot') or "ديفد")..' ','')
 end
 if data.message_.content_.text_ then
 local NewCmmd = DevAbs:get(David.."Set:Cmd:Group:New1"..msg.chat_id_..":"..data.message_.content_.text_)
@@ -1258,7 +1258,7 @@ end
 if ChatType == 'pv' then 
 if text == '/start' or text == 'رجوع ،🔙‘' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '⌁︙مرحبا عزيزي المطور \n⌁︙انت المطور الاساسي هنا \n⌁︙اليك ازرار سورس ديف بروكس \n⌁︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⌁︙مرحبا عزيزي المطور \n⌁︙انت المطور الاساسي هنا \n⌁︙اليك ازرار سورس ديفد \n⌁︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'وضع اسم البوت','↫ تحديث ⌁','وضع كليشه المطور'},
 {'↫ المطورين ⌁','↫ الاحصائيات ⌁'},
@@ -1286,7 +1286,7 @@ return false
 end end
 if text == '~ تعيين كلايش الاوامر ~' then 
 if SecondSudo(msg) then 
-local Sudo_Welcome = '⌁︙اهلا بك مجددا عزيزي المطور \n⌁︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ديف بروكس فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⌁︙اهلا بك مجددا عزيزي المطور \n⌁︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ديفد فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'حذف كليشة الايدي','تعيين كليشة الايدي'},
 {'تعيين امر الاوامر'},
@@ -2611,7 +2611,7 @@ end end
 if SecondSudo(msg) then
 if text == 'جلب نسخه الكروبات' and ChCheck(msg) or text == 'جلب نسخه احتياطيه' and ChCheck(msg) then
 local List = DevAbs:smembers(David..'Abs:Groups') 
-local BotName = (DevAbs:get(David.."Abs:NameBot") or 'بروكس')
+local BotName = (DevAbs:get(David.."Abs:NameBot") or 'ديفد')
 local GetJson = '{"BotId": '..David..',"BotName": "'..BotName..'","GroupsList":{'  
 for k,v in pairs(List) do 
 LinkGroups = DevAbs:get(David.."Abs:Groups:Links"..v)
@@ -2801,21 +2801,21 @@ end
 --     Source David     --
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'بوت' or text == 'بوتت' then 
-NameBot = (DevAbs:get(David..'Abs:NameBot') or 'بروكس')
+NameBot = (DevAbs:get(David..'Abs:NameBot') or 'ديفد')
 local DavidTEAM = {"لتكول بوت اسمي "..NameBot.." 😒🔪","اسمي القميل "..NameBot.." 😚♥️","عندي اسم تره 😒💔","صيحولي "..NameBot.." كافي بوت 😒🔪","انت البوت لك 😒💔"} 
 DevAbs2 = math.random(#DavidTEAM) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, DavidTEAM[DevAbs2] , 1, 'html') 
 return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
-NameBot = (DevAbs:get(David..'Abs:NameBot') or 'بروكس') 
+NameBot = (DevAbs:get(David..'Abs:NameBot') or 'ديفد') 
 local DavidTEAM = {"اسمي القميل "..NameBot.." 😚♥️","هلاا يروحيي وياكك "..NameBot.." 😻♥️"} 
 DevAbs2 = math.random(#DavidTEAM) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, DavidTEAM[DevAbs2] , 1, 'html') 
 return false
 end
-if text and text == (DevAbs:get(David..'Abs:NameBot') or 'بروكس') then 
-NameBot = (DevAbs:get(David..'Abs:NameBot') or 'بروكس')
+if text and text == (DevAbs:get(David..'Abs:NameBot') or 'ديفد') then 
+NameBot = (DevAbs:get(David..'Abs:NameBot') or 'ديفد')
 local namebot = {'😸♥️ هلا كلبي وياك '..NameBot..' تفضل','ترةه مصختهاا احجيي شرايد 😕😒💔','اطلقق واحدد يصيح '..NameBot..' 😻♥️','خبصتت امنةة شتريدد عااد 🤧😒💔'} 
 name = math.random(#namebot) 
 Dev_Abs(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'html') 
@@ -9521,7 +9521,7 @@ end
 --     Source David     --
 if SecondSudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙جاري تحديث سورس ديف بروكس', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙جاري تحديث سورس ديفد', 1, 'md') 
 os.execute('rm -rf David.lua') 
 os.execute('wget https://raw.githubusercontent.com/DavidTeam8/David/master/David.lua') 
 dofile('David.lua') 
@@ -9669,7 +9669,7 @@ if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
-local TextS = "\n⌁︙قائمة ملفات متجر سورس بروكس\n⌁︙الملفات المتوفره حاليا ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+local TextS = "\n⌁︙قائمة ملفات متجر سورس ديفد\n⌁︙الملفات المتوفره حاليا ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 local TextE = "┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n⌁︙علامة ↫ (✔) تعني الملف مفعل\n⌁︙علامة ↫ (✖️) تعني الملف معطل\n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
