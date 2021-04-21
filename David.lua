@@ -672,7 +672,7 @@ end
 local function Filters(msg, value)
 local abs = (David..'Abs:Filters:'..msg.chat_id_)
 if abs then
-local names = DevAbs:hkeys(Rio)
+local names = DevAbs:hkeys(abs)
 local value = value:gsub(' ','')
 for i=1, #names do
 if string.match(value:lower(), names[i]:lower()) and not VipMem(msg) then
@@ -9596,58 +9596,6 @@ os.execute('unlink RUNABS.sh;unlink ABS;chmod +x David.sh;chmod +x Run;./Run')
 else
 send(msg.chat_id_, msg.id_,'⌁︙لديك اخر نسخه من التحديث لاتوجد اخطاء')
 end
-end
-if text == 'نقل الاحصائيات' then
-local Users = DevAbs:smembers(David.."User_Bot")
-local Groups = DevAbs:smembers(David..'Chek:Groups')
-local Sudos = DevAbs:smembers(David.."Sudo:User")
-if DevAbs:get(David..'Name:Bot') then
-DevAbs:set(David..'Abs:NameBot',(DevAbs:get(David..'Name:Bot') or 'ديفد'))
-end
-for i = 1, #Users do
-local id = Users[i]
-if id:match("^(%d+)") then
-DevAbs:sadd(David..'Abs:Users',Users[i]) 
-end
-end
-for i = 1, #Sudos do
-DevAbs:sadd(David..'Abs:SudoBot:',Sudos[i]) 
-end
-for i = 1, #Groups do
-DevAbs:sadd(David..'Abs:Groups',Groups[i]) 
-if DevAbs:get(David.."Private:Group:Link"..Groups[i]) then
-DevAbs:set(David.."Abs:Groups:Links"..Groups[i],DevAbs:get(David.."Private:Group:Link"..Groups[i]))
-end
-if DevAbs:get(David.."Get:Welcome:Group"..Groups[i]) then
-DevAbs:set(David..'Abs:Groups:Welcomes'..Groups[i],DevAbs:get(David.."Get:Welcome:Group"..Groups[i]))
-end
-local list2 = DevAbs:smembers(David..'Constructor'..Groups[i])
-for k,v in pairs(list2) do
-DevAbs:sadd(David.."Abs:Constructor:"..Groups[i], v)
-end
-local list3 = DevAbs:smembers(David..'Basic:Constructor'..Groups[i])
-for k,v in pairs(list3) do
-DevAbs:sadd(David.."Abs:BasicConstructor:"..Groups[i], v)
-end
-local list4 = DevAbs:smembers(David..'Manager'..Groups[i])
-for k,v in pairs(list4) do
-DevAbs:sadd(David.."Abs:Managers:"..Groups[i], v)
-end
-local list5 = DevAbs:smembers(David..'Mod:User'..Groups[i])
-for k,v in pairs(list5) do
-DevAbs:sadd(David.."Abs:Admins:"..Groups[i], v)
-end
-local list6 = DevAbs:smembers(David..'Special:User'..Groups[i])
-for k,v in pairs(list6) do
-DevAbs:sadd(David.."Abs:VipMem:"..Groups[i], v)
-end
-DevAbs:set(David.."Abs:Lock:Bots"..Groups[i],"del") DevAbs:hset(David.."Abs:Spam:Group:User"..Groups[i] ,"Spam:User","keed") 
-LockList ={'Abs:Lock:Links','Abs:Lock:Forwards','Abs:Lock:Videos','Abs:Lock:Gifs','Abs:Lock:EditMsgs','Abs:Lock:Stickers','Abs:Lock:Farsi','Abs:Lock:Spam','Abs:Lock:WebLinks'}
-for i,Lock in pairs(LockList) do
-DevAbs:set(David..Lock..Groups[i],true)
-end
-end
-send(msg.chat_id_, msg.id_,'⌁︙تم نقل ↫ '..#Groups..' مجموعه\n⌁︙تم نقل ↫ '..#Users..' مشترك\n⌁︙من التحديث القديم الى التحديث الجديد')
 end
 --     Source David     --
 if text == 'الملفات' then
