@@ -8997,8 +8997,8 @@ end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 --     Source David     --
-if text == 'حذف الردود' and Manager(msg) and ChCheck(msg) or text == 'مسح الردود' and Manager(msg) and ChCheck(msg) or text == 'حذف ردود المدير' and Manager(msg) and ChCheck(msg) or text == 'مسح ردود المدير' and Manager(msg) and ChCheck(msg) then
-local redod = DevAbs:smembers(David..'Abs:Manager:GpRed'..msg.chat_id_..'')
+if text == 'حذف الردود' and BasicConstructor(msg) and ChCheck(msg) or text == 'مسح الردود' and BasicConstructor(msg) and ChCheck(msg) or text == 'حذف ردود المدير' and BasicConstructor(msg) and ChCheck(msg) or text == 'مسح ردود المدير' and BasicConstructor(msg) and ChCheck(msg) then
+local redod = DevAbs:smembers(David..'Abs:BasicConstructor:GpRed'..msg.chat_id_..'')
 if #redod == 0 then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙لا توجد ردود مضافه" ,  1, "md")
 else
@@ -9011,7 +9011,7 @@ DevAbs:del(David..'Abs:Stecker:GpRed'..v..msg.chat_id_)
 DevAbs:del(David..'Abs:Video:GpRed'..v..msg.chat_id_)
 DevAbs:del(David..'Abs:File:GpRed'..v..msg.chat_id_)
 DevAbs:del(David..'Abs:Text:GpRed'..v..msg.chat_id_)
-DevAbs:del(David..'Abs:Manager:GpRed'..msg.chat_id_)
+DevAbs:del(David..'Abs:BasicConstructor:GpRed'..msg.chat_id_)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف ردود المدير")  
 return false
@@ -9521,7 +9521,7 @@ end
 --     Source David     --
 if SecondSudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙جاري تحديث سورس ديفد', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙لا يوجد تحديث لسورس ديفد', 1, 'md') 
 os.execute('rm -rf David.lua') 
 os.execute('wget https://raw.githubusercontent.com/DavidTeam8/David/master/David.lua') 
 dofile('David.lua') 
