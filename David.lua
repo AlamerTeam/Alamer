@@ -1089,7 +1089,7 @@ ComdNew = text:match("^اضف صلاحيه (.*)$")
 DevAbs:set(David.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_,ComdNew)  
 DevAbs:sadd(David.."Coomds"..msg.chat_id_,ComdNew)  
 DevAbs:setex(David.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_,200,true)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙ارسل نوع الصلاحيه \n{ عضو • مميز  • ادمن  • مدير }\n⌁︙ارسل الغاء لالغاء الامر ", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙ارسل نوع الصلاحيه \n{ عضو • مميز • ادمن • مدير • منشئ }\n⌁︙ارسل الغاء لالغاء الامر ", 1, 'html')
 end
 if text and text:match("^حذف صلاحيه (.*)$") and ChCheck(msg) or text and text:match("^مسح صلاحيه (.*)$") and ChCheck(msg) then 
 ComdNew = text:match("^حذف صلاحيه (.*)$") or text:match("^مسح صلاحيه (.*)$")
@@ -1102,6 +1102,12 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙تم الغاء الامر", 1, 'html')
 DevAbs:del(David.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) 
 return false  
 end 
+if text == "منشئ" then
+if not BasicConstructor(msg) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙تستطيع اضافة صلاحية ( عضو • مميز  • ادمن • مدير)\n⌁︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+return false
+end
+end
 if text == "مدير" then
 if not Constructor(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙تستطيع اضافة صلاحية ( عضو • مميز  • ادمن )\n⌁︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
@@ -1120,7 +1126,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙تستطيع اضافة صلاحية ( 
 return false
 end
 end
-if text == "مدير" or text == "ادمن" or text == "مميز" or text == "عضو" then
+if text == "منشئ" or text == "مدير" or text == "ادمن" or text == "مميز" or text == "عضو" then
 local textn = DevAbs:get(David.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_)  
 DevAbs:set(David.."Comd:New:rt:Abs:"..textn..msg.chat_id_,text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙تم اضافة الصلاحيه", 1, 'html')
@@ -1147,6 +1153,10 @@ elseif mrabs == "مدير" and Manager(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:set(David.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)  
 DevAbs:sadd(David..'Abs:Managers:'..msg.chat_id_, result.sender_user_id_)
+elseif mrabs == "منشئ" and Constructor(msg) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+DevAbs:set(David.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)
+DevAbs:sadd(David..'Abs:Constructor:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "عضو" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
@@ -1173,6 +1183,10 @@ elseif mrabs == "مدير" and Manager(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'L9L9L')..')'..' ❩\n⌁︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(David..'Abs:Managers:'..msg.chat_id_, result.sender_user_id_)
 DevAbs:del(David.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
+elseif mrabs == "منشئ" and Constructor(msg) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+DevAbs:set(David.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)
+DevAbs:sadd(David..'Abs:Constructor:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "عضو" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'L9L9L')..')'..' ❩\n⌁︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
@@ -1198,6 +1212,10 @@ DevAbs:set(David.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "مدير" and Manager(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:sadd(David..'Abs:Managers:'..msg.chat_id_, result.id_)
+DevAbs:set(David.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
+elseif mrabs == "منشئ" and Constructor(msg) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+DevAbs:sadd(David..'Abs:Constructor:'..msg.chat_id_, result.id_)
 DevAbs:set(David.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "عضو" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'L9L9L')..')'..' ❩\n⌁︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
@@ -1226,6 +1244,10 @@ DevAbs:del(David.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "مدير" and Manager(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'L9L9L')..')'..' ❩\n⌁︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevAbs:srem(David..'Abs:Managers:'..msg.chat_id_, result.id_)
+DevAbs:del(David.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
+elseif mrabs == "منشئ" and Constructor(msg) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'L9L9L')..')'..' ❩\n⌁︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+DevAbs:srem(David..'Abs:Constructor:'..msg.chat_id_, result.id_)
 DevAbs:del(David.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "عضو" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'L9L9L')..')'..' ❩\n⌁︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
@@ -1261,7 +1283,7 @@ if SecondSudo(msg) then
 local Sudo_Welcome = '⌁︙مرحبا عزيزي المطور \n⌁︙انت المطور الاساسي هنا \n⌁︙اليك ازرار سورس ديفد \n⌁︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'وضع اسم البوت','↫ تحديث ⌁','وضع كليشه المطور'},
-{'↫ المطورين ⌁','↫ الاحصائيات ⌁'},
+{'↫ المطورين ⌁','↫ الاحصائيات ⌁','↫ الثانويين ⌁'},
 {'↫ المجموعات ⌁','روابط الكروبات','↫ المشتركين ⌁'},
 {'↫ تعطيل التواصل ⌁','↫ تفعيل التواصل ⌁'},
 {'تنظيف الكروبات','↫ قائمه العام ⌁','تنظيف المشتركين'},
@@ -2160,7 +2182,7 @@ function get_welcome(extra,result,success)
 if DevAbs:get(David..'Abs:Groups:Welcomes'..msg.chat_id_) then
 text = DevAbs:get(David..'Abs:Groups:Welcomes'..msg.chat_id_)
 else
-text = '• نورت حبي \n• [firstname lastname] \n• [@username]'
+text = '• نورت حبي \n• [`firstname lastname`] \n• [`@username`]'
 end
 local text = text:gsub('firstname',(result.first_name_ or ''))
 local text = text:gsub('lastname',(result.last_name_ or ''))
@@ -3467,7 +3489,7 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end,nil) 
 end
 --     Source David     --
-if text == 'كت تويت' and ChCheck(msg) then
+if text == 'كت تويت' and ChCheck(msg) or text == 'كت' and ChCheck(msg) then
 if not DevAbs:get(David..'Abs:Lock:Games'..msg.chat_id_) then
 local DavidTEAM = {  "آخر مرة زرت مدينة الملاهي؟",  "آخر مرة أكلت أكلتك المفضّلة؟",  "الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل",  "آخر شيء ضاع منك؟","كلمة أخيرة لشاغل البال؟","طريقتك المعتادة في التخلّص من الطاقة السلبية؟","شهر من أشهر العام له ذكرى جميلة معك؟","كلمة غريبة من لهجتك ومعناها؟🤓","‏- شيء سمعته عالق في ذهنك هاليومين؟","متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟","‏- أبرز صفة حسنة في صديقك المقرب؟","هل تشعر أن هنالك مَن يُحبك؟","اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟","أجمل شيء حصل معك خلال هاليوم؟","صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔","كلمة لشخص غالي اشتقت إليه؟💕","آخر خبر سعيد، متى وصلك؟","أنا آسف على ....؟","أوصف نفسك بكلمة؟","صريح، مشتاق؟","‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟","‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭","‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤","‏- تخيّل شيء قد يحدث في المستقبل؟","‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚","شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟","| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.", }  
 Dev_Abs(msg.chat_id_, msg.id_, 1, ''..DavidTEAM[math.random(#DavidTEAM)]..'' , 1, 'md')  
@@ -5821,7 +5843,7 @@ end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source David     --
-if text == "المطورين الثانويين" and SecondSudo(msg) or text == "الثانويين" and SecondSudo(msg) then 
+if text == "↫ الثانويين ⌁" and SecondSudo(msg) or text == "الثانويين" and SecondSudo(msg) then 
 local List = DevAbs:smembers(David..'Abs:SecondSudo:')
 text = "⌁︙قائمة المطورين الثانويين ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 for k,v in pairs(List) do
@@ -6754,7 +6776,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم حفظ كليشة الترحيب',
 return false   
 end
 if text and text:match("^ضع ترحيب$") and ChCheck(msg) or text and text:match("^وضع ترحيب$") and ChCheck(msg) or text and text:match("^اضف ترحيب$") and ChCheck(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الترحيب الان\n⌁︙تستطيع اضافة مايلي ↫ ⤈\n⌁︙دالة عرض الاسم ↫ firstname\n⌁︙دالة عرض المعرف ↫ username', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الترحيب الان\n⌁︙تستطيع اضافة مايلي ↫ ⤈\n⌁︙دالة عرض الاسم ↫ `firstname`\n⌁︙دالة عرض المعرف ↫ `username`', 1, 'md')
 DevAbs:set(David..'Abs:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 if text and text:match("^حذف الترحيب$") and ChCheck(msg) or text and text:match("^حذف ترحيب$") and ChCheck(msg) then
@@ -9521,7 +9543,7 @@ end
 --     Source David     --
 if SecondSudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙لا يوجد تحديث لسورس ديفد', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙جاري تحديث سورس ديفد', 1, 'md') 
 os.execute('rm -rf David.lua') 
 os.execute('wget https://raw.githubusercontent.com/DavidTeam8/David/master/David.lua') 
 dofile('David.lua') 
